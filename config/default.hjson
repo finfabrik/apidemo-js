@@ -1,0 +1,13 @@
+{
+  api: {
+    base: 'https://api-test.cryptofabrik.com/api/v1'
+    ws: 'wss://test.cryptofabrik.com/marketdata/ws/v1'
+    version: 'v1'
+    key: ''
+    secret: ''
+  },
+
+  user: {
+    account: ''
+  }
+}
