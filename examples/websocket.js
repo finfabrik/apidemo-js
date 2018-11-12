@@ -1,7 +1,7 @@
 import WebSocket from 'ws'
 import readline from "readline";
 import {Signature} from './utils'
-import config from 'config';
+import config from 'config'
 
 const ws = new WebSocket(config.get('api.ws'))
 
@@ -41,11 +41,15 @@ ws.on('open', () => {
    ws.send(sub)
 })
 
-ws.on('close',() => {
-   console.log('disconnected');
+ws.on('close',(code, reason) => {
+   console.log('disconnected', code, reason);
    process.exit(0);
 })
 
 ws.on('message', (message) => {
    console.log('<===', message);
+})
+
+ws.on('error', (error) => {
+   console.error("ws received error", error)
 })
