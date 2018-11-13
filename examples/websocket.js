@@ -1,8 +1,10 @@
+import ConsoleStamp from 'console-stamp'
 import WebSocket from 'ws'
 import readline from "readline";
 import {Signature} from './utils'
 import config from 'config'
 
+ConsoleStamp(console)
 const ws = new WebSocket(config.get('api.ws'))
 
 const rl = readline.createInterface({
@@ -17,9 +19,9 @@ rl.on('line', (line) => {
          break
       default:
          try {
-            let sub = JSON.parse(line)
+            let sub = JSON.stringify(JSON.parse(line))
             console.log('===>', sub)
-            ws.send(JSON.stringify(sub))
+            ws.send(sub)
          } catch(e) {}
    }
 });
